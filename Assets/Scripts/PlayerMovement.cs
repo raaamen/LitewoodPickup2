@@ -12,6 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 horizontal;
     public Vector3 vertical;
 
+    public AudioSource audioSrc;
+
+    //Clips
+    public AudioClip pickupSound;
+    public AudioClip walkingSound;
+    public AudioClip depositSound;
+
     public bool holdingGarbage;
 
     //0 is forward, 1 is backward
@@ -21,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private int horizontalFacing;
 
     private void Awake() {
+        audioSrc = GetComponent<AudioSource>();
         gmScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
         sprRender = GetComponent<SpriteRenderer>();
@@ -82,15 +90,16 @@ public class PlayerMovement : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Trash":
+                audioSrc.PlayOneShot(pickupSound);
                 Destroy(other.gameObject);
                 holdingGarbage=true;
                 break;
             case "Bin":
                 if (holdingGarbage)
                 {
-                   gmScript.TrashCollected++;
-                   //sound effect
-                   holdingGarbage=false;
+                    audioSrc.PlayOneShot(pickupSound);
+                    gmScript.TrashCollected++;
+                    holdingGarbage=false;
                 }
                 break;
         }
