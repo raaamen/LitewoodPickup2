@@ -484,8 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b48231c6a52407bb404330b6c7a12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: {x: 10, y: 0, z: 0}
-  vertical: {x: 0, y: 10, z: 0}
+  anim: {fileID: 0}
+  horizontal: {x: 0.05, y: 0, z: 0}
+  vertical: {x: 0, y: 0.05, z: 0}
+  holdingGarbage: 0
 --- !u!1 &2069981799
 GameObject:
   m_ObjectHideFlags: 0
