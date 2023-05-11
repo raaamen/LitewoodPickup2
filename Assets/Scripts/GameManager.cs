@@ -2,13 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     //Counters
     public int totalTrashInLevel;
-    public int trashCollected;
+    private int _trashCollected;
+    public int TrashCollected{
+        get{
+            return _trashCollected;
+        }
+        set{
+            _trashCollected = value;
+            UpdateText();
+            if (_trashCollected == totalTrashInLevel)
+            {
+                GameWin();
+            }
+        }
+    }
     private float _timer;
     private float Timer{
         get{
@@ -16,7 +30,7 @@ public class GameManager : MonoBehaviour
         }
         set{
             _timer = value;
-            if (_timer <= 0 && trashCollected != totalTrashInLevel)
+            if (_timer <= 0 && TrashCollected != totalTrashInLevel)
             {
                 GameLose();
             }
@@ -25,10 +39,12 @@ public class GameManager : MonoBehaviour
 
     //Vectors
     
-
+    //Text
+    public TMP_Text trashRemainingText;
 
 
     private void Awake() {
+        UpdateText();
         totalTrashInLevel = GameObject.FindGameObjectsWithTag("Trash").Length;
     }
     // Start is called before the first frame update
@@ -50,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     }
     void UpdateText(){
-        
+        trashRemainingText.text = "Trash remaining: "+(totalTrashInLevel-TrashCollected);
     }
 
     

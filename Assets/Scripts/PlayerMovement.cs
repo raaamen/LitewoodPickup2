@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
             case "Bin":
                 if (holdingGarbage)
                 {
-                   gmScript.trashCollected++;
+                   gmScript.TrashCollected++;
                    //sound effect
                    holdingGarbage=false;
                 }
