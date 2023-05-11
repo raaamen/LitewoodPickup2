@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("Colliding with " + other.gameObject.name);
         switch (other.gameObject.tag)
         {
             case "Trash":

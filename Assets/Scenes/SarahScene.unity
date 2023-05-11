@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 496850721}
   - component: {fileID: 496850720}
   - component: {fileID: 496850722}
+  - component: {fileID: 496850723}
   m_Layer: 0
   m_Name: trashplaceHold
   m_TagString: Trash
@@ -234,6 +235,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!50 &496850723
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496850719}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &918084395
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +484,7 @@ GameObject:
   - component: {fileID: 1293520240}
   - component: {fileID: 1293520241}
   - component: {fileID: 1293520242}
+  - component: {fileID: 1293520243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -600,6 +623,27 @@ MonoBehaviour:
   horizontal: {x: 0.02, y: 0, z: 0}
   vertical: {x: 0, y: 0.02, z: 0}
   holdingGarbage: 0
+--- !u!50 &1293520243
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293520237}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2069981799
 GameObject:
   m_ObjectHideFlags: 0
