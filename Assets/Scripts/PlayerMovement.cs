@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private GameManager gmScript;
 
-    public Animator anim;
-    public SpriteRenderer sprRender;
+    private Animator anim;
+    private SpriteRenderer sprRender;
+    private Rigidbody2D rb;
 
     public Vector3 horizontal;
     public Vector3 vertical;
@@ -19,15 +20,20 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walkingSound;
     public AudioClip depositSound;
 
-    public bool holdingGarbage;
+    [SerializeField]
+    private bool holdingGarbage;
+    [SerializeField]
+    private int speed;
 
     //0 is forward, 1 is backward
     private int facing;
+    
 
     //0 is right, 1 is left;
     private int horizontalFacing;
 
     private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
         audioSrc = GetComponent<AudioSource>();
         gmScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
@@ -44,22 +50,23 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             facing = 1;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            transform.position+=vertical;
+            rb.MovePosition(transform.position+vertical * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             facing = 0;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            transform.position-=vertical;
+            rb.MovePosition(transform.position-vertical * Time.deltaTime);
         }
         
 
@@ -68,20 +75,21 @@ public class PlayerMovement : MonoBehaviour
             sprRender.flipX=false;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            transform.position+=horizontal;
+            rb.MovePosition(transform.position+horizontal * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             sprRender.flipX=true;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            transform.position-=horizontal;
+            rb.MovePosition(transform.position-horizontal * Time.deltaTime);
         }
         
         if (!Input.anyKey)
         {
             anim.SetTrigger("Idle");
         }
+        
 
     }
 

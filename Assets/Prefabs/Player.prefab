@@ -147,11 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b48231c6a52407bb404330b6c7a12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  sprRender: {fileID: 0}
-  horizontal: {x: 0.02, y: 0, z: 0}
-  vertical: {x: 0, y: 0.02, z: 0}
+  horizontal: {x: 10, y: 0, z: 0}
+  vertical: {x: 0, y: 10, z: 0}
+  audioSrc: {fileID: 0}
+  pickupSound: {fileID: 0}
+  walkingSound: {fileID: 0}
+  depositSound: {fileID: 0}
   holdingGarbage: 0
+  speed: 5
 --- !u!50 &7514866531911061792
 Rigidbody2D:
   serializedVersion: 4
