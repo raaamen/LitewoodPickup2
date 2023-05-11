@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
     //0 is right, 1 is left;
     private int horizontalFacing;
 
+    private float h;
+    private float v;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         audioSrc = GetComponent<AudioSource>();
@@ -52,21 +55,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         
+        Vector2 playerInput = new Vector2(h,v);
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             facing = 1;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            rb.MovePosition(transform.position+vertical * Time.deltaTime);
+            playerInput.y = 1;
+            Debug.Log(h);
+            //rb.MovePosition(transform.position+vertical * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             facing = 0;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            rb.MovePosition(transform.position-vertical * Time.deltaTime);
+            playerInput.y = -1;
+            //rb.MovePosition(transform.position-vertical * Time.deltaTime);
         }
         
 
@@ -75,20 +83,25 @@ public class PlayerMovement : MonoBehaviour
             sprRender.flipX=false;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            rb.MovePosition(transform.position+horizontal * Time.deltaTime);
+            playerInput.x = 1;
+            //rb.MovePosition(transform.position+horizontal * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             sprRender.flipX=true;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
-            rb.MovePosition(transform.position-horizontal * Time.deltaTime);
+            playerInput.x = -1;
+            //rb.MovePosition(transform.position-horizontal * Time.deltaTime);
         }
         
         if (!Input.anyKey)
         {
+            playerInput = Vector2.zero;
             anim.SetTrigger("Idle");
         }
+        
+        rb.AddForce(playerInput*Time.deltaTime*speed, ForceMode2D.Impulse);
         
 
     }
