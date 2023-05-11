@@ -32,25 +32,29 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(anim.GetLayerIndex("Base Layer"));
-        Debug.Log(anim.GetLayerIndex("GarbageBack"));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
+            facing = 1;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             transform.position+=vertical;
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
+            facing = 0;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             transform.position-=vertical;
         }
+        
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             sprRender.flipX=false;
@@ -58,16 +62,19 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("Walk");
             transform.position+=horizontal;
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             sprRender.flipX=true;
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             transform.position-=horizontal;
         }
-        else anim.SetTrigger("Idle");
-
         
+        if (!Input.anyKey)
+        {
+            anim.SetTrigger("Idle");
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
