@@ -6,17 +6,25 @@ public class PlayerMovement : MonoBehaviour
 {
     private GameManager gmScript;
 
+    public Animator anim;
+
     public Vector3 horizontal;
     public Vector3 vertical;
 
+    public bool holdingGarbage;
+
+    //0 is forward, 1 is backward
+    private int facing;
+
     private void Awake() {
         gmScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        anim = GetComponent<Animator>();
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        facing = 1;
     }
 
     // Update is called once per frame
@@ -44,8 +52,16 @@ public class PlayerMovement : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Trash":
-                gmScript.trashCollected++;
                 Destroy(other.gameObject);
+                holdingGarbage=true;
+                break;
+            case "Bin":
+                if (holdingGarbage)
+                {
+                   gmScript.trashCollected++;
+                   //sound effect
+                   holdingGarbage=false;
+                }
                 break;
         }
     }
