@@ -52,3 +52,6 @@ TagManager:
   - name: Foreground
     uniqueID: 51588873
     locked: 0
+  - name: UI
+    uniqueID: 4271318047
+    locked: 0
