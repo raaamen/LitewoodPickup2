@@ -19,6 +19,10 @@ public class SceneFade : MonoBehaviour
     private void Awake(){
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+
+        //var black = Instantiate(blackScreen, Vector2.zero, Quaternion.identity);
+        //black.transform.parent = GameObject.Find("Canvas").transform;
+        //black.gameObject.transform.position = Vector2.zero;
     }
 
     public IEnumerator FadeIn(){
@@ -47,11 +51,13 @@ public class SceneFade : MonoBehaviour
     }
 
     public IEnumerator SceneSwitch(Transform newPos, Transform cameraPos){
+        Debug.Log("Fading out");
         StartCoroutine("FadeOut");
         yield return new WaitForSeconds(fadeSpeed*2);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.gameObject.transform.position = newPos.position;
         cam.transform.position = cameraPos.transform.position;
+        Debug.Log("Fading in");
         StartCoroutine("FadeIn");
         yield return new WaitForSeconds(fadeSpeed);
     }
