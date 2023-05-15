@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
     public Sprite cleanBed;
 
 
-    public Sprite openDoorArcade;
-    public Sprite openDoorPizza;
+    public GameObject arcadeClosedSign;
+    public GameObject pizzaClosedSign;
 
     public RawImage arcadeStar;
     public RawImage pizzaStar;
@@ -127,9 +127,11 @@ public class GameManager : MonoBehaviour
 
     void UnlockArcade(){
         arcadeUnlocked = true;
+        Destroy(arcadeClosedSign);
     }
     void UnlockPizzaPlace(){
         pizzaUnlocked = true;
+        Destroy(pizzaClosedSign);
     }
 
     void ChangeMusic(){
