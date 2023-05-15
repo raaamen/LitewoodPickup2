@@ -1117,6 +1117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1860923819}
     - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
+      propertyPath: doorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 789927996}
@@ -13393,6 +13397,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1860923819}
     - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
+      propertyPath: doorType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1787066788}
@@ -13664,6 +13672,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1860923819}
+    - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
+      propertyPath: doorType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -15851,6 +15863,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1860923819}
+    - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
+      propertyPath: doorType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -23542,6 +23558,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1860923819}
+    - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
+      propertyPath: doorType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3564595550894230073, guid: 075e62097857ad04aadf4c5ebf70076b, type: 3}
       propertyPath: spawnPoint
       value: 
