@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class DoorTriggerScript : MonoBehaviour
 {
+    public enum DoorType{
+        Arcade,
+        Pizza,
+        Bedroom,
+        Outside
+    }
+    public DoorType doorType;
+    public bool arcadeDoor;
+    public bool pizzaDoor;
     public GameObject player;
     public GameObject cam;
     public bool canTravel;
@@ -11,6 +20,7 @@ public class DoorTriggerScript : MonoBehaviour
     public GameObject camspawnPoint;
 
     public SceneFade fadeManager;
+    public GameManager gmScript;
 
     
 
@@ -18,6 +28,8 @@ public class DoorTriggerScript : MonoBehaviour
     void Start()
     {
         fadeManager = GameObject.Find("GameManager").GetComponent<SceneFade>();
+        gmScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     // Update is called once per frame
@@ -35,8 +47,27 @@ public class DoorTriggerScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("Player Hit Trigger");
-            canTravel = true;
+            switch (doorType)
+            {
+                case DoorType.Arcade:
+                    if (gmScript.arcadeUnlocked)
+                    {
+                        canTravel = true;
+                    }
+                    break;
+                case DoorType.Pizza:
+                    if (gmScript.pizzaUnlocked)
+                    {
+                        canTravel = true;
+                    }
+                    break;
+                case DoorType.Bedroom:
+                    canTravel = true;
+                    break;
+                case DoorType.Outside:
+                    canTravel = true;
+                    break;
+            }
         }
     }
 

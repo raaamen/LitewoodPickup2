@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
         House
     }
 
+    public bool arcadeUnlocked;
+    public bool pizzaUnlocked;
+
     public Location playerLocation;
 
     public List<AudioClip> music;
@@ -97,11 +100,6 @@ public class GameManager : MonoBehaviour
         amtUnlockPizzaText.text = ""+amountToUnlockPizzaPlace;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void GameWin(){
 
@@ -128,10 +126,10 @@ public class GameManager : MonoBehaviour
     }
 
     void UnlockArcade(){
-
+        arcadeUnlocked = true;
     }
     void UnlockPizzaPlace(){
-
+        pizzaUnlocked = true;
     }
 
     void ChangeMusic(){
@@ -152,5 +150,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
 }
