@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool holdingGarbage;
     [SerializeField]
     private int speed;
+    private int amountOfGarbageHeld;
 
     //0 is forward, 1 is backward
     private int facing;
@@ -114,13 +115,15 @@ public class PlayerMovement : MonoBehaviour
                 audioSrc.PlayOneShot(pickupSound);
                 Destroy(other.gameObject);
                 holdingGarbage=true;
+                amountOfGarbageHeld++;
                 break;
             case "Bin":
                 if (holdingGarbage)
                 {
                     audioSrc.PlayOneShot(pickupSound);
-                    gmScript.TrashCollected++;
+                    gmScript.TrashCollected+=amountOfGarbageHeld;
                     holdingGarbage=false;
+                    amountOfGarbageHeld=0;
                 }
                 break;
         }

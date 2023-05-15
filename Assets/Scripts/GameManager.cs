@@ -47,12 +47,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private int amountToUnlockPizzaPlace;
+    [SerializeField]
+    private int amountToUnlockArcade;
+    private float garbageMeterAdder;
+
     //Vectors
     
     //Text
     public TMP_Text trashRemainingText;
+    public TMP_Text amtUnlockPizzaText;
+    public TMP_Text amtUnlockArcadeText;
 
     public AudioSource audioSrc;
+
+    public Slider garbageSlider;
 
     private void Awake() {
         audioSrc = GetComponent<AudioSource>();
@@ -63,7 +73,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        garbageMeterAdder = 1/totalTrashInLevel;
+        amtUnlockArcadeText.text = ""+amountToUnlockArcade;
+        amtUnlockPizzaText.text = ""+amountToUnlockPizzaPlace;
     }
 
     // Update is called once per frame
@@ -80,18 +92,24 @@ public class GameManager : MonoBehaviour
     }
     void UpdateText(){
         trashRemainingText.text = "Trash remaining: "+(totalTrashInLevel-TrashCollected);
+        garbageSlider.value = 1-(TrashCollected*garbageMeterAdder);
+
     }
 
     void ChangeMusic(){
         switch (playerLocation)
         {
             case Location.Street:
+                audioSrc.clip = music[0];
                 break;
             case Location.Arcade:
+                audioSrc.clip = music[1];
                 break;
             case Location.Pizza:
+                audioSrc.clip = music[2];
                 break;
             case Location.House:
+                audioSrc.clip = music[3];
                 break;
         }
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6219612757063829693}
   - component: {fileID: 6219612757063829694}
+  - component: {fileID: 6219612758302066901}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,5 +45,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f014e5f5b50a43a4a18cfcfc670b7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLocation: 0
+  music: []
   totalTrashInLevel: 0
+  amountToUnlockPizzaPlace: 35
+  amountToUnlockArcade: 20
   trashRemainingText: {fileID: 0}
+  amtUnlockPizzaText: {fileID: 0}
+  amtUnlockArcadeText: {fileID: 0}
+  audioSrc: {fileID: 0}
+  garbageSlider: {fileID: 0}
+--- !u!114 &6219612758302066901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219612757063829695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8c44248ea594d32b883cfbfb1e9dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackScreen: {fileID: 6923859276251987060, guid: b50d410429a7b480ebd61478c7b3ae84, type: 3}
+  fading: 0
+  fadeSpeed: 0.25

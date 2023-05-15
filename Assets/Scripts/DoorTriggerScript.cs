@@ -10,12 +10,14 @@ public class DoorTriggerScript : MonoBehaviour
     public GameObject spawnPoint;
     public GameObject camspawnPoint;
 
+    public SceneFade fadeManager;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        fadeManager = GameObject.Find("GameManager").GetComponent<SceneFade>();
     }
 
     // Update is called once per frame
@@ -23,8 +25,9 @@ public class DoorTriggerScript : MonoBehaviour
     {
         if (canTravel && Input.GetKeyDown(KeyCode.Space))
         {
-            player.transform.position = spawnPoint.transform.position;
-            cam.transform.position = camspawnPoint.transform.position; 
+            fadeManager.CallSceneSwitch(spawnPoint.transform, camspawnPoint.transform);
+            //player.transform.position = spawnPoint.transform.position;
+            //cam.transform.position = camspawnPoint.transform.position;
         }
     }
 
