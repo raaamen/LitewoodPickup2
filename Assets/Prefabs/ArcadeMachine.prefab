@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2735637859140371103}
   m_Layer: 0
   m_Name: ArcadeMachine
-  m_TagString: Untagged
+  m_TagString: ArcadeMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

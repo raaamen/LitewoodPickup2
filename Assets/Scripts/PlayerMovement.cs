@@ -24,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private bool holdingGarbage;
     [SerializeField]
     private int speed;
-    private int amountOfGarbageHeld;
+
+    
 
     //0 is forward, 1 is backward
     private int facing;
@@ -108,24 +109,37 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("Colliding with " + other.gameObject.name);
         switch (other.gameObject.tag)
         {
             case "Trash":
                 audioSrc.PlayOneShot(pickupSound);
                 Destroy(other.gameObject);
                 holdingGarbage=true;
-                amountOfGarbageHeld++;
+                gmScript.amountOfGarbageHeld++;
                 break;
             case "Bin":
                 if (holdingGarbage)
                 {
                     audioSrc.PlayOneShot(pickupSound);
-                    gmScript.TrashCollected+=amountOfGarbageHeld;
+                    gmScript.TrashCollected+=gmScript.amountOfGarbageHeld;
                     holdingGarbage=false;
-                    amountOfGarbageHeld=0;
+                    gmScript.amountOfGarbageHeld=0;
+                    gmScript.UpdateText();
                 }
                 break;
+            case "ArcadeMachine":
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanArcadeMachine;
+                break;
+            case "PizzaTable":
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanPizzaTable;
+                break;
+            case "PizzaStool":
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanPizzaStool;
+                break;
+            case "Bed":
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanBed;
+                break;
+
         }
     }
 
@@ -135,7 +149,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetLayerWeight(i, 0f);
         }
-
         if(face == 0 && !hasGarbage)
         {
             anim.SetLayerWeight(0, 1f);

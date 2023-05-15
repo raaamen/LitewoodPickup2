@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> music;
 
     //Counters
-    public int totalTrashInLevel;
-    private int _trashCollected;
-    public int TrashCollected{
+    public float totalTrashInLevel;
+    private float _trashCollected;
+    public float TrashCollected{
         get{
             return _trashCollected;
         }
@@ -51,7 +51,12 @@ public class GameManager : MonoBehaviour
     private int amountToUnlockPizzaPlace;
     [SerializeField]
     private int amountToUnlockArcade;
+
+    [SerializeField]
     private float garbageMeterAdder;
+
+    [SerializeField]
+    public float amountOfGarbageHeld;
 
     //Vectors
     
@@ -64,16 +69,30 @@ public class GameManager : MonoBehaviour
 
     public Slider garbageSlider;
 
+
+    //arcade and pizza
+    public Sprite cleanArcadeMachine;
+    public Sprite cleanPizzaTable;
+    public Sprite cleanPizzaStool;
+    public Sprite cleanBed;
+
+
+    public Sprite openDoorArcade;
+    public Sprite openDoorPizza;
+
+    public RawImage arcadeStar;
+    public RawImage pizzaStar;
+
     private void Awake() {
         audioSrc = GetComponent<AudioSource>();
         UpdateText();
         totalTrashInLevel = GameObject.FindGameObjectsWithTag("Trash").Length;
+        garbageMeterAdder = 1/totalTrashInLevel;
         playerLocation = Location.House;
     }
     // Start is called before the first frame update
     void Start()
     {
-        garbageMeterAdder = 1/totalTrashInLevel;
         amtUnlockArcadeText.text = ""+amountToUnlockArcade;
         amtUnlockPizzaText.text = ""+amountToUnlockPizzaPlace;
     }
@@ -90,9 +109,28 @@ public class GameManager : MonoBehaviour
     void GameLose(){
 
     }
-    void UpdateText(){
-        trashRemainingText.text = "Trash remaining: "+(totalTrashInLevel-TrashCollected);
-        garbageSlider.value = 1-(TrashCollected*garbageMeterAdder);
+    public void UpdateText(){
+        trashRemainingText.text = ""+TrashCollected;
+        Debug.Log("Trash collected "+TrashCollected);
+        garbageSlider.value+=(amountOfGarbageHeld*garbageMeterAdder);
+
+        if (TrashCollected >= amountToUnlockArcade)
+        {
+            arcadeStar.color = Color.yellow;
+            UnlockArcade();
+        }
+        if (TrashCollected >= amountToUnlockPizzaPlace)
+        {
+            pizzaStar.color = Color.yellow;
+            UnlockPizzaPlace();
+        }
+
+    }
+
+    void UnlockArcade(){
+
+    }
+    void UnlockPizzaPlace(){
 
     }
 
