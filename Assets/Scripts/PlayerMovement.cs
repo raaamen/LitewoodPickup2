@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private GameManager gmScript;
-
     private Animator anim;
     private SpriteRenderer sprRender;
     private Rigidbody2D rb;
@@ -24,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private bool holdingGarbage;
     [SerializeField]
     private int speed;
-
-    
 
     //0 is forward, 1 is backward
     private int facing;
@@ -166,6 +163,4 @@ public class PlayerMovement : MonoBehaviour
             anim.SetLayerWeight(3, 1f);
         }
     }
-
-
 }

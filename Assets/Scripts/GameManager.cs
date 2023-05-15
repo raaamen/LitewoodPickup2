@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
     void GameLose(){
 
     }
+    
     public void UpdateText(){
         trashRemainingText.text = ""+TrashCollected;
         Debug.Log("Trash collected "+TrashCollected);
