@@ -177,20 +177,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        switch (other.gameObject.tag)
+        if (gmScript.spacebarPromptText.gameObject.activeSelf)
         {
-            case "ArcadeMachine":
-                gmScript.spacebarPromptText.gameObject.SetActive(false);
-                break;
-            case "PizzaTable":
-                gmScript.spacebarPromptText.gameObject.SetActive(false);
-                break;
-            case "PizzaStool":
-                gmScript.spacebarPromptText.gameObject.SetActive(false);
-                break;
-            case "Bed":
-                gmScript.spacebarPromptText.gameObject.SetActive(false);
-                break;
+            gmScript.spacebarPromptText.gameObject.SetActive(false);
         }
     }
 
