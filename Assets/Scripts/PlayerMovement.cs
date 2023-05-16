@@ -75,10 +75,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        
         Vector2 playerInput = new Vector2(h,v);
-
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             facing = 1;
@@ -98,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
             dustTrail.enabled = true;
             //rb.MovePosition(transform.position-vertical * Time.deltaTime);
         }
-
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             sprRender.flipX=false;
