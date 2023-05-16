@@ -50,6 +50,22 @@ public class SceneFade : MonoBehaviour
         yield return null;
     }
 
+    public void TitleScreenFadeOut(Image titleScreen){
+        titleScreen.CrossFadeAlpha(0f, fadeSpeed*3, false);
+    }
+
+    public void FadeOutImage(Image image, float speed){
+        image.CrossFadeAlpha(0f, speed, false);
+    }
+    public void FadeInImage(Image image, float speed){
+        Color fixedColor = image.color;
+        fixedColor.a = 1;
+        image.color = fixedColor;
+        image.CrossFadeAlpha(0f, 0f, true);
+
+        image.CrossFadeAlpha(1, speed, false);
+    }
+
     public IEnumerator SceneSwitch(Transform newPos, Transform cameraPos){
         Debug.Log("Fading out");
         StartCoroutine("FadeOut");

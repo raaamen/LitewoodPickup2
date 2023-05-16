@@ -9,6 +9,9 @@ TagManager:
   - DoorTrigger
   - ArcadeMachine
   - PizzaTable
+  - PizzaStool
+  - Bed
+  - BedsideTable
   layers:
   - Default
   - TransparentFX

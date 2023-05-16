@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
     public Sprite cleanPizzaTable;
     public Sprite cleanPizzaStool;
     public Sprite cleanBed;
+    public Sprite cleanStall;
+    public Sprite cleanBedside;
 
 
     public GameObject arcadeClosedSign;
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour
 
     public RawImage arcadeStar;
     public RawImage pizzaStar;
+
+    public TMP_Text spacebarPromptText;
 
     private void Awake() {
         audioSrc = GetComponent<AudioSource>();
@@ -107,7 +111,7 @@ public class GameManager : MonoBehaviour
     void GameLose(){
 
     }
-    
+
     public void UpdateText(){
         trashRemainingText.text = ""+TrashCollected;
         Debug.Log("Trash collected "+TrashCollected);

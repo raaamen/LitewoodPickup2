@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
             playerInput.y = -1;
             //rb.MovePosition(transform.position-vertical * Time.deltaTime);
         }
-        
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
@@ -124,19 +123,74 @@ public class PlayerMovement : MonoBehaviour
                     gmScript.UpdateText();
                 }
                 break;
+            
+
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        switch (other.gameObject.tag)
+        {
             case "ArcadeMachine":
-                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanArcadeMachine;
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanArcadeMachine;
+                } 
                 break;
             case "PizzaTable":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanPizzaTable;
+                }
                 break;
             case "PizzaStool":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanPizzaStool;
+                }
                 break;
             case "Bed":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanBed;
+                }
                 break;
+            case "Stall":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanStall;
+                }
+                break;
+            case "BedsideTable":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanBedside;
+                }
+                break;
+        }
+    }
 
+    private void OnCollisionExit2D(Collision2D other) {
+        switch (other.gameObject.tag)
+        {
+            case "ArcadeMachine":
+                gmScript.spacebarPromptText.gameObject.SetActive(false);
+                break;
+            case "PizzaTable":
+                gmScript.spacebarPromptText.gameObject.SetActive(false);
+                break;
+            case "PizzaStool":
+                gmScript.spacebarPromptText.gameObject.SetActive(false);
+                break;
+            case "Bed":
+                gmScript.spacebarPromptText.gameObject.SetActive(false);
+                break;
         }
     }
 
