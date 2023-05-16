@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 horizontal;
     public Vector3 vertical;
 
+    public GameObject sparkeEffect;
+
     public AudioSource audioSrc;
 
     //Clips
@@ -138,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
                     gmScript.TrashCollected+=gmScript.amountOfGarbageHeld;
                     holdingGarbage=false;
                     gmScript.amountOfGarbageHeld=0;
+                    Instantiate(sparkeEffect, other.transform.position, Quaternion.identity);
                     gmScript.UpdateText();
                 }
                 break;
