@@ -45,16 +45,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f014e5f5b50a43a4a18cfcfc670b7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arcadeUnlocked: 0
+  pizzaUnlocked: 0
+  gameStarted: 0
   playerLocation: 0
   music: []
   totalTrashInLevel: 0
   amountToUnlockPizzaPlace: 35
   amountToUnlockArcade: 20
+  garbageMeterAdder: 0
+  amountOfGarbageHeld: 0
   trashRemainingText: {fileID: 0}
   amtUnlockPizzaText: {fileID: 0}
   amtUnlockArcadeText: {fileID: 0}
   audioSrc: {fileID: 0}
   garbageSlider: {fileID: 0}
+  cleanArcadeMachine: {fileID: 21300000, guid: ce125d2890e68ae4c8677cc8d062c199, type: 3}
+  cleanPizzaTable: {fileID: 21300000, guid: 87e0c7b9b55a8034faa0acb52e626ecb, type: 3}
+  cleanPizzaStool: {fileID: 21300000, guid: 5c821e555aeccbc4aaf20d2a388219b7, type: 3}
+  cleanBed: {fileID: 21300000, guid: 8354c555ad0296a4185bb9a878cf6a27, type: 3}
+  cleanStall: {fileID: 0}
+  cleanBedside: {fileID: 0}
+  arcadeClosedSign: {fileID: 0}
+  pizzaClosedSign: {fileID: 0}
+  arcadeStar: {fileID: 0}
+  pizzaStar: {fileID: 0}
+  spacebarPromptText: {fileID: 0}
 --- !u!114 &6219612758302066901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8c44248ea594d32b883cfbfb1e9dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackScreen: {fileID: 6923859276251987060, guid: b50d410429a7b480ebd61478c7b3ae84, type: 3}
+  blackScreen: {fileID: 0}
   fading: 0
   fadeSpeed: 0.25

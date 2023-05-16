@@ -129,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionStay2D(Collision2D other) {
+        
         switch (other.gameObject.tag)
         {
             case "ArcadeMachine":
@@ -181,6 +182,10 @@ public class PlayerMovement : MonoBehaviour
         {
             gmScript.spacebarPromptText.gameObject.SetActive(false);
         }
+    }
+
+    public void SetSpeed(float speed){
+        this.speed = (int)speed;
     }
 
     void SetAnimator(int face, bool hasGarbage){

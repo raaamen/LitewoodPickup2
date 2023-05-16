@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool arcadeUnlocked;
     public bool pizzaUnlocked;
 
+    public bool gameStarted;
+
     public Location playerLocation;
 
     public List<AudioClip> music;
