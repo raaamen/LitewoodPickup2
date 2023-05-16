@@ -21261,7 +21261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514866531911061793, guid: bd4215be8f1c9400684b6b1b2d4bde87, type: 3}
       propertyPath: speed
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7514866531911061820, guid: bd4215be8f1c9400684b6b1b2d4bde87, type: 3}
       propertyPath: m_RootOrder
@@ -21321,7 +21321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438823450313692925, guid: bd4215be8f1c9400684b6b1b2d4bde87, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4215be8f1c9400684b6b1b2d4bde87, type: 3}

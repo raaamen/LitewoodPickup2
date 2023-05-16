@@ -290,8 +290,7 @@ MonoBehaviour:
   walkingSound: {fileID: 0}
   depositSound: {fileID: 0}
   holdingGarbage: 0
-  speed: 120
-  dustTrail: {fileID: 0}
+  speed: 0
 --- !u!50 &7514866531911061792
 Rigidbody2D:
   serializedVersion: 4
@@ -5059,9 +5058,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1132766833
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayerID: 2064765447
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
