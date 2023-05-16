@@ -87,7 +87,7 @@ public class SceneFade : MonoBehaviour
             alpha+=0.01f;
             temp.a = alpha;
             sprite.color = temp;
-            yield return new WaitForSeconds(fadeSpeed);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
