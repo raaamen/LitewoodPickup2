@@ -39,12 +39,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Collision2D currentCollider;
 
-    public ParticleSystem dustTrail;
+    public ParticleSystem.EmissionModule dustTrail;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         audioSrc = GetComponent<AudioSource>();
         gmScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        dustTrail = GetComponent<ParticleSystem>().emission;
         anim = GetComponent<Animator>();
         sprRender = GetComponent<SpriteRenderer>();
         facing = 0;
@@ -85,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("Walk");
             playerInput.y = 1;
             Debug.Log(h);
+            dustTrail.enabled = true;
             //rb.MovePosition(transform.position+vertical * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
@@ -93,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             playerInput.y = -1;
+            dustTrail.enabled = true;
             //rb.MovePosition(transform.position-vertical * Time.deltaTime);
         }
 
@@ -102,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             playerInput.x = 1;
+            dustTrail.enabled = true;
             //rb.MovePosition(transform.position+horizontal * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -110,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
             SetAnimator(facing, holdingGarbage);
             anim.SetTrigger("Walk");
             playerInput.x = -1;
+            dustTrail.enabled = true;
             //rb.MovePosition(transform.position-horizontal * Time.deltaTime);
         }
         
@@ -117,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerInput = Vector2.zero;
             anim.SetTrigger("Idle");
+            dustTrail.enabled = false;
+            
         }
 
         
