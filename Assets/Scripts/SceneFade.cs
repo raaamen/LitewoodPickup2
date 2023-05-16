@@ -54,16 +54,52 @@ public class SceneFade : MonoBehaviour
         titleScreen.CrossFadeAlpha(0f, fadeSpeed*3, false);
     }
 
-    public void FadeOutImage(Image image, float speed){
-        image.CrossFadeAlpha(0f, speed, false);
+    public void FadeOutImage(Image image){
+        image.CrossFadeAlpha(0f, fadeSpeed, false);
     }
-    public void FadeInImage(Image image, float speed){
+
+    public IEnumerator FadeOutImage(SpriteRenderer sprite){
+        Color transparent = new Color(0,0,0,0);
+        float alpha = sprite.color.a;
+        var temp = sprite.color;
+
+        while (sprite.color.a > 0)
+        {
+            alpha-=0.01f;
+            temp.a = alpha;
+            sprite.color = temp;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+    }
+    public void CallFadeOutImage(SpriteRenderer sprite){
+        StartCoroutine(FadeOutImage(sprite));
+    }
+
+    public IEnumerator FadeInImage(SpriteRenderer sprite){
+        Color transparent = new Color(0,0,0,0);
+        float alpha = sprite.color.a;
+        var temp = sprite.color;
+
+        while (sprite.color.a < 1)
+        {
+            alpha+=0.01f;
+            temp.a = alpha;
+            sprite.color = temp;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+    }
+
+    public void CallFadeInImage(SpriteRenderer sprite){
+        StartCoroutine(FadeInImage(sprite));
+    }
+
+    public void FadeInImage(Image image){
         Color fixedColor = image.color;
         fixedColor.a = 1;
         image.color = fixedColor;
         image.CrossFadeAlpha(0f, 0f, true);
 
-        image.CrossFadeAlpha(1, speed, false);
+        image.CrossFadeAlpha(1, fadeSpeed, false);
     }
 
     public IEnumerator SceneSwitch(Transform newPos, Transform cameraPos){

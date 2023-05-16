@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NPCScript : MonoBehaviour
 {
+
+    //Arcade NPC
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
