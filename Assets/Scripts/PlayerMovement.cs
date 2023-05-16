@@ -181,6 +181,10 @@ public class PlayerMovement : MonoBehaviour
                 gmScript.spacebarPromptText.gameObject.SetActive(true);
                 currentCollider = other;
                 break;
+            case "VendingMachine":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
             
 
         }
