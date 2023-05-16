@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Collision2D currentCollider;
 
+    public ParticleSystem dustTrail;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         audioSrc = GetComponent<AudioSource>();
