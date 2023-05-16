@@ -59,16 +59,18 @@ public class SceneFade : MonoBehaviour
     }
 
     public IEnumerator FadeOutImage(SpriteRenderer sprite){
+        Debug.Log("Fading out "+sprite.gameObject.name);
         Color transparent = new Color(0,0,0,0);
         float alpha = sprite.color.a;
         var temp = sprite.color;
 
         while (sprite.color.a > 0)
         {
+            Debug.Log("Alpha: "+sprite.color.a);
             alpha-=0.01f;
             temp.a = alpha;
             sprite.color = temp;
-            yield return new WaitForSeconds(fadeSpeed);
+            yield return new WaitForSeconds(0.01f);
         }
     }
     public void CallFadeOutImage(SpriteRenderer sprite){

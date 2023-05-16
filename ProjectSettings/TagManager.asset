@@ -12,6 +12,8 @@ TagManager:
   - PizzaStool
   - Bed
   - BedsideTable
+  - Stall
+  - OutdoorDining
   layers:
   - Default
   - TransparentFX

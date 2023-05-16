@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6706631523532866860}
   - component: {fileID: 6706631523532866851}
   - component: {fileID: 6706631523532866861}
+  - component: {fileID: 7098098395860674393}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -111,3 +112,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.1602554, y: 4.1602464}
   m_EdgeRadius: 0
+--- !u!114 &7098098395860674393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6706631523532866850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cdee6f77bf247f29560f4efc62b209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cleanVersion: {fileID: 21300000, guid: 8354c555ad0296a4185bb9a878cf6a27, type: 3}
+  PostClean:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7098098395860674393}
+        m_TargetAssemblyTypeName: CleanFaderScript, Assembly-CSharp
+        m_MethodName: CleanVersion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

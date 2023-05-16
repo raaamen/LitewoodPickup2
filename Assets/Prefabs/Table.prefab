@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7760994051437354528}
   - component: {fileID: 7760994051437354529}
   - component: {fileID: 7760994051437354531}
+  - component: {fileID: -5074136515121464270}
   m_Layer: 0
   m_Name: Table
   m_TagString: PizzaTable
@@ -111,3 +112,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8034983, y: 1.2725372}
   m_EdgeRadius: 0
+--- !u!114 &-5074136515121464270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760994051437354534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cdee6f77bf247f29560f4efc62b209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cleanVersion: {fileID: 21300000, guid: 87e0c7b9b55a8034faa0acb52e626ecb, type: 3}
+  PostClean:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5074136515121464270}
+        m_TargetAssemblyTypeName: CleanFaderScript, Assembly-CSharp
+        m_MethodName: CleanVersion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     private float h;
     private float v;
 
+    [SerializeField]
+    Collision2D currentCollider;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         audioSrc = GetComponent<AudioSource>();
@@ -49,6 +52,19 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentCollider!=null)
+            {
+                currentCollider.gameObject.GetComponent<CleanFaderScript>().CleanVersion();
+                currentCollider.gameObject.GetComponent<CleanFaderScript>().PostClean.Invoke(); 
+            }
+            else return;
+            
+        }
     }
 
     // Update is called once per frame
@@ -98,6 +114,8 @@ public class PlayerMovement : MonoBehaviour
             playerInput = Vector2.zero;
             anim.SetTrigger("Idle");
         }
+
+        
         
         rb.AddForce(playerInput*Time.deltaTime*speed, ForceMode2D.Impulse);
         
@@ -123,13 +141,48 @@ public class PlayerMovement : MonoBehaviour
                     gmScript.UpdateText();
                 }
                 break;
+            case "Bed":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "ArcadeMachine":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "PizzaTable":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "PizzaStool":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "Stall":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "BedsideTable":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
+            case "OutdoorDining":
+                gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                break;
             
 
         }
     }
 
+    /*
     private void OnCollisionStay2D(Collision2D other) {
-        
+        Debug.Log("Colliding with: "+other.gameObject.name);
+        CleanFaderScript temp = null;
+        if (other.gameObject.GetComponent<CleanFaderScript>()!= null)
+        {
+            temp = other.gameObject.GetComponent<CleanFaderScript>();
+            
+        }
         switch (other.gameObject.tag)
         {
             case "ArcadeMachine":
@@ -137,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanArcadeMachine;
+                     
                 } 
                 break;
             case "PizzaTable":
@@ -155,10 +209,15 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "Bed":
                 gmScript.spacebarPromptText.gameObject.SetActive(true);
+                currentCollider = other;
+                
+                
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    Debug.Log("space pressed to clean");
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = gmScript.cleanBed;
                 }
+                
                 break;
             case "Stall":
                 gmScript.spacebarPromptText.gameObject.SetActive(true);
@@ -176,10 +235,12 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
+    */
 
     private void OnCollisionExit2D(Collision2D other) {
         if (gmScript.spacebarPromptText.gameObject.activeSelf)
         {
+            currentCollider = null;
             gmScript.spacebarPromptText.gameObject.SetActive(false);
         }
     }

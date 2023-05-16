@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2735637859140371096}
   - component: {fileID: 2735637859140371097}
   - component: {fileID: 2735637859140371103}
+  - component: {fileID: 8344805188953302349}
   m_Layer: 0
   m_Name: ArcadeMachine
   m_TagString: ArcadeMachine
@@ -111,3 +112,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.1550107, y: 0.78939927}
   m_EdgeRadius: 0
+--- !u!114 &8344805188953302349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735637859140371098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cdee6f77bf247f29560f4efc62b209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cleanVersion: {fileID: 21300000, guid: ce125d2890e68ae4c8677cc8d062c199, type: 3}
+  PostClean:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8344805188953302349}
+        m_TargetAssemblyTypeName: CleanFaderScript, Assembly-CSharp
+        m_MethodName: CleanVersion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
