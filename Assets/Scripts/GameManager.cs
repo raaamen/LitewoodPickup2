@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
         Street,
         Arcade,
         Pizza,
-        House
+        House,
+        Title
     }
 
     public bool arcadeUnlocked;
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour
     void ChangeMusic(){
         switch (playerLocation)
         {
+            
             case Location.Street:
                 audioSrc.clip = music[0];
                 break;
@@ -155,6 +157,9 @@ public class GameManager : MonoBehaviour
                 break;
             case Location.House:
                 audioSrc.clip = music[3];
+                break;
+            case Location.Title:
+                audioSrc.clip = music[4];
                 break;
         }
     }
