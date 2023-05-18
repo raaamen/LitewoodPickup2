@@ -18,8 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Clips
     public AudioClip pickupSound;
-    public AudioClip walkingSound;
+    
     public AudioClip depositSound;
+    public AudioClip cleanSound;
 
     [SerializeField]
     private bool holdingGarbage;
@@ -64,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (currentCollider!=null)
             {
+                audioSrc.PlayOneShot(cleanSound);
                 currentCollider.gameObject.GetComponent<CleanFaderScript>().CleanVersion();
                 currentCollider.gameObject.GetComponent<CleanFaderScript>().PostClean.Invoke(); 
             }
@@ -141,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
             case "Bin":
                 if (holdingGarbage)
                 {
-                    audioSrc.PlayOneShot(pickupSound);
+                    audioSrc.PlayOneShot(depositSound);
                     gmScript.TrashCollected+=gmScript.amountOfGarbageHeld;
                     holdingGarbage=false;
                     gmScript.amountOfGarbageHeld=0;

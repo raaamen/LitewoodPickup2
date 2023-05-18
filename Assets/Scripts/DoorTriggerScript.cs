@@ -37,7 +37,24 @@ public class DoorTriggerScript : MonoBehaviour
     {
         if (canTravel && Input.GetKeyDown(KeyCode.Space))
         {
+            gmScript.sfxSrc.PlayOneShot(gmScript.sfx[2]);
             fadeManager.CallSceneSwitch(spawnPoint.transform, camspawnPoint.transform);
+            switch (doorType)
+            {
+                case DoorType.Arcade:
+                    gmScript.playerLocation = GameManager.Location.Arcade;
+                    break;
+                case DoorType.Pizza:
+                    gmScript.playerLocation = GameManager.Location.Pizza;
+                    break;
+                case DoorType.Bedroom:
+                    gmScript.playerLocation = GameManager.Location.House;
+                    break;
+                case DoorType.Outside:
+                    gmScript.playerLocation = GameManager.Location.Street;
+                    break;
+            }
+            gmScript.ChangeMusic();
             //player.transform.position = spawnPoint.transform.position;
             //cam.transform.position = camspawnPoint.transform.position;
         }

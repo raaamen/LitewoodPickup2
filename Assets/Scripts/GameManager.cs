@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Location playerLocation;
 
     public List<AudioClip> music;
+    public List<AudioClip> sfx;
 
     //Counters
     public float totalTrashInLevel;
@@ -71,7 +72,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text amtUnlockPizzaText;
     public TMP_Text amtUnlockArcadeText;
 
-    public AudioSource audioSrc;
+    public AudioSource musicSrc;
+    public AudioSource sfxSrc;
 
     public Slider garbageSlider;
 
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text spacebarPromptText;
 
     private void Awake() {
-        audioSrc = GetComponent<AudioSource>();
+        
         UpdateText();
         totalTrashInLevel = GameObject.FindGameObjectsWithTag("Trash").Length;
         garbageMeterAdder = 1/totalTrashInLevel;
@@ -122,11 +124,13 @@ public class GameManager : MonoBehaviour
 
         if (TrashCollected >= amountToUnlockArcade)
         {
+            sfxSrc.PlayOneShot(sfx[1]);
             arcadeStar.color = Color.yellow;
             UnlockArcade();
         }
         if (TrashCollected >= amountToUnlockPizzaPlace)
         {
+            sfxSrc.PlayOneShot(sfx[1]);
             pizzaStar.color = Color.yellow;
             UnlockPizzaPlace();
         }
@@ -142,26 +146,27 @@ public class GameManager : MonoBehaviour
         Destroy(pizzaClosedSign);
     }
 
-    void ChangeMusic(){
+    public void ChangeMusic(){
         switch (playerLocation)
         {
             
             case Location.Street:
-                audioSrc.clip = music[0];
+                musicSrc.clip = music[0];
                 break;
             case Location.Arcade:
-                audioSrc.clip = music[1];
+                musicSrc.clip = music[1];
                 break;
             case Location.Pizza:
-                audioSrc.clip = music[2];
+                musicSrc.clip = music[2];
                 break;
             case Location.House:
-                audioSrc.clip = music[3];
+                musicSrc.clip = music[3];
                 break;
             case Location.Title:
-                audioSrc.clip = music[4];
+                musicSrc.clip = music[4];
                 break;
         }
+        musicSrc.Play();
     }
 
 }
