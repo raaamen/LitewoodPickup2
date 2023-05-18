@@ -125,13 +125,12 @@ public class GameManager : MonoBehaviour
 
         if (TrashCollected >= amountToUnlockArcade)
         {
-            sfxSrc.PlayOneShot(sfx[1]);
             arcadeStar.color = Color.yellow;
             UnlockArcade();
         }
         if (TrashCollected >= amountToUnlockPizzaPlace)
         {
-            sfxSrc.PlayOneShot(sfx[1]);
+            
             pizzaStar.color = Color.yellow;
             UnlockPizzaPlace();
         }
@@ -139,10 +138,20 @@ public class GameManager : MonoBehaviour
     }
 
     void UnlockArcade(){
+        if (arcadeUnlocked)
+        {
+            return;
+        }
+        sfxSrc.PlayOneShot(sfx[1]);
         arcadeUnlocked = true;
         Destroy(arcadeClosedSign);
     }
     void UnlockPizzaPlace(){
+        if (pizzaUnlocked)
+        {
+            return;
+        }
+        sfxSrc.PlayOneShot(sfx[1]);
         pizzaUnlocked = true;
         Destroy(pizzaClosedSign);
     }
