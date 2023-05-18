@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+
+    public UnityEvent gameEnd;
+
     public enum Location{
         Street,
         Arcade,
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
             _timer = value;
             if (_timer <= 0 && TrashCollected != totalTrashInLevel)
             {
-                GameLose();
+                
             }
         }
     }
@@ -111,12 +115,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void GameWin(){
+    public void GameWin(){
 
     }
-    void GameLose(){
 
-    }
+
+    
 
     public void UpdateText(){
         trashRemainingText.text = ""+TrashCollected;
@@ -133,6 +137,10 @@ public class GameManager : MonoBehaviour
             
             pizzaStar.color = Color.yellow;
             UnlockPizzaPlace();
+        }
+        if (TrashCollected==totalTrashInLevel)
+        {
+            gameEnd.Invoke();
         }
 
     }
