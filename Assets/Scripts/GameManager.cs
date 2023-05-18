@@ -100,7 +100,8 @@ public class GameManager : MonoBehaviour
         UpdateText();
         totalTrashInLevel = GameObject.FindGameObjectsWithTag("Trash").Length;
         garbageMeterAdder = 1/totalTrashInLevel;
-        playerLocation = Location.House;
+        playerLocation = Location.Title;
+        ChangeMusic();
     }
     // Start is called before the first frame update
     void Start()
@@ -167,6 +168,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
         musicSrc.Play();
+    }
+
+    public void TitleScreenMusicSwitch(){
+        playerLocation = Location.House;
+        ChangeMusic();
     }
 
 }
