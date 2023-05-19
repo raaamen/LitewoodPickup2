@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public UnityEvent gameEnd;
+
+    public Button startButton;
+    public Button restartButton;
 
     public enum Location{
         Street,
@@ -190,6 +194,17 @@ public class GameManager : MonoBehaviour
     public void TitleScreenMusicSwitch(){
         playerLocation = Location.House;
         ChangeMusic();
+    }
+
+    public void RestartGame(){
+        SceneManager.LoadScene("KimariScene");
+    }
+
+    public void DeactivateButton(Button button){
+        button.interactable = false;
+    }
+    public void ActivateButton(Button button){
+        button.interactable = true;
     }
 
 }
