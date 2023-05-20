@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
             UpdateText();
             if (_trashCollected == totalTrashInLevel)
             {
-                GameWin();
+                Debug.Log("Game won");
+                gameEnd.Invoke();
             }
         }
     }
@@ -119,9 +120,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void GameWin(){
-
-    }
+    
 
 
     
@@ -141,10 +140,6 @@ public class GameManager : MonoBehaviour
             
             pizzaStar.color = Color.yellow;
             UnlockPizzaPlace();
-        }
-        if (TrashCollected==totalTrashInLevel)
-        {
-            gameEnd.Invoke();
         }
 
     }
@@ -192,6 +187,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void TitleScreenMusicSwitch(){
+        Debug.Log("Button pressed");
         playerLocation = Location.House;
         ChangeMusic();
     }

@@ -46,16 +46,26 @@ public class SceneFade : MonoBehaviour
         blackScreen.CrossFadeAlpha(0f, 0f, true);
 
         blackScreen.CrossFadeAlpha(1, fadeSpeed, false);
-
+        
         yield return null;
     }
 
-    public void TitleScreenFadeOut(Image titleScreen){
+    public IEnumerator TitleScreenFadeOut(Image titleScreen){
         titleScreen.CrossFadeAlpha(0f, fadeSpeed*3, false);
+        yield return new WaitForSeconds(fadeSpeed*3);
+        titleScreen.gameObject.SetActive(false);
+    }
+    public void CallTitleScreenFadeOut(Image title){
+        StartCoroutine(TitleScreenFadeOut(title));
     }
 
-    public void FadeOutImage(Image image){
+    public IEnumerator FadeOutImage(Image image){
         image.CrossFadeAlpha(0f, fadeSpeed, false);
+        yield return new WaitForSeconds(fadeSpeed);
+        image.gameObject.SetActive(false);
+    }
+    public void CallFadeOutImage(Image image){
+        StartCoroutine(FadeOutImage(image));
     }
 
     public IEnumerator FadeOutImage(SpriteRenderer sprite){
@@ -72,12 +82,14 @@ public class SceneFade : MonoBehaviour
             sprite.color = temp;
             yield return new WaitForSeconds(0.01f);
         }
+        sprite.gameObject.SetActive(false);
     }
     public void CallFadeOutImage(SpriteRenderer sprite){
         StartCoroutine(FadeOutImage(sprite));
     }
 
     public IEnumerator FadeInImage(SpriteRenderer sprite){
+        sprite.gameObject.SetActive(true);
         Color transparent = new Color(0,0,0,0);
         float alpha = sprite.color.a;
         var temp = sprite.color;
@@ -96,6 +108,7 @@ public class SceneFade : MonoBehaviour
     }
 
     public void FadeInImage(Image image){
+        image.gameObject.SetActive(true);
         Color fixedColor = image.color;
         fixedColor.a = 1;
         image.color = fixedColor;
